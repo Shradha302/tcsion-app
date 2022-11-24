@@ -11,7 +11,7 @@
                 <v-text-field label="Book Name" v-model="newBook.name" class="pa-3 ma-3"> </v-text-field>
                 <v-text-field label="Author Name" v-model="newBook.author" class="pa-3 ma-3"> </v-text-field>
                 <v-text-field label="No. of Pages" v-model="newBook.pages" class="pa-3 ma-3"> </v-text-field>
-                <!-- <div class="mb-6">Active picker: </div> -->
+                <!-- datepicker -->
                 <v-menu
                     ref="menu"
                     v-model="menu"
@@ -22,7 +22,7 @@
                 >
                     <template v-slot:activator="{ on, attrs }">
                     <v-text-field
-                        v-model="date"
+                        v-model="newBook.date"
                         label="Publishing date"
                         prepend-icon="mdi-calendar"
                         readonly
@@ -31,7 +31,7 @@
                     ></v-text-field>
                     </template>
                     <v-date-picker
-                    v-model="date"
+                    v-model="newBook.date"
                     min="1950-01-01"
                     max="2022-11-30"
                     @change="save"
@@ -59,14 +59,14 @@ export default {
            },
            
           dialog:false,
-          date: null,
+          // date: null,
           menu: false,
            
         }
     },
     watch: {
       menu (val) {
-        val && setTimeout(() => (this.activePicker = 'YEAR'))
+        val 
       },
     },
     methods:{
@@ -79,6 +79,7 @@ export default {
       },
       save (date) {
         this.$refs.menu.save(date)
+        
       },
     }
   
