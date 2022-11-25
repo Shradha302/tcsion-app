@@ -7,8 +7,7 @@
     >
     <template v-slot:top>
       <EditItem v-bind:editedItem="editedItem" v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem"  v-bind:dialog="dialog" v-on:editItem="editTableItem($event)" v-bind:item="item" ref="edit"/>
-      <DeleteItem  v-bind:books="books" v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem" v-bind:dialogDelete="dialogDelete" v-bind:item="item" ref="delete"/>
-      <!-- <DeleteItem  v-bind:books="books" v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem" v-bind:dialogDelete="dialogDelete" v-bind:item="item" ref="delete" v-on:updateFieldChild="updateFields($event)"/> -->
+      <DeleteItem  v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem" v-bind:dialogDelete="dialogDelete" v-bind:item="item" ref="delete" />
         <!-- <v-dialog v-model="dialog" max-width="500px">
           <v-card>
             <v-card-title>
@@ -144,7 +143,6 @@ export default {
         }
        
     },
-    //dialog,editedindex,editedItem ki value update kro from child
     // watch: {
     //   dialog (val) {
     //     val || this.close()
@@ -165,12 +163,6 @@ export default {
         deleteItem(item){
           this.$refs.delete.deleteItem(item);
         },
-        // updateFields(dialogDeleteInternal,editedIndexInternal,editedItemInternal,bookList){
-        //   this.books=bookList;
-        //   this.dialogDelete=dialogDeleteInternal;
-        //   this.editedIndex=editedIndexInternal;
-        //   this.editedItem=editedItemInternal;
-        // }
        
        
         // editItem (item) {

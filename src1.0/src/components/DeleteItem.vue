@@ -16,14 +16,10 @@
 <script>
 export default {
     name:'DeleteItem',
-    props:['dialogDelete','editedIndex','editedItem','defaultItem','item','books'],
+    props:['dialogDelete','editedIndex','editedItem','defaultItem','item'],
     data(){
         return{
-            
-            // booksList:this.books,
-            // editedIndexInternal:this.editedIndex,
-            // editedItemInternal:this.editedItem,
-            // dialogDeleteInternal:this.dialogDelete,
+            books:[],
         }
     },
     methods:{
@@ -33,14 +29,11 @@ export default {
             this.editedIndex = this.books.indexOf(item)
             this.editedItem = Object.assign({}, item)
             this.dialogDelete = true
-           // this.updateFieldChild(dialogDeleteInternal,editedIndexInternal,editedItemInternal,bookList);
         },
         deleteItemConfirm () {
             console.log(this.editedIndex);
             this.books.splice(this.editedIndex, 1)
             this.closeDelete()
-           // this.updateFieldChild(dialogDeleteInternal,editedIndexInternal,editedItemInternal,bookList);
-
         },
         closeDelete () {
             this.dialogDelete = false
@@ -48,16 +41,7 @@ export default {
                 this.editedItem = Object.assign({}, this.defaultItem)
                 this.editedIndex = -1
             })
-            //this.updateFieldChild(dialogDeleteInternal,editedIndexInternal,editedItemInternal,bookList);
-
-            
         },
-        // updateFieldChild(dialogDeleteInternal,editedIndexInternal,editedItemInternal,bookList){
-        //     console.log(dialogDeleteInternal)
-        //     console.log(editedIndexInternal)
-        //     console.log(editedItemInternal)
-        //     console.log(bookList)
-        // }
 
     },
     watch: {
