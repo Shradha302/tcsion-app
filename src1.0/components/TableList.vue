@@ -6,9 +6,7 @@
         class="elevation-1"
     >
     <template v-slot:top>
-      <EditItem v-bind:editedItem="editedItem" v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem"  v-bind:dialog="dialog" v-on:editItem="editTableItem($event)" v-bind:item="item" ref="edit"/>
-      <DeleteItem  v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem" v-bind:dialogDelete="dialogDelete" v-bind:item="item" ref="delete" />
-        <!-- <v-dialog v-model="dialog" max-width="500px">
+        <v-dialog v-model="dialog" max-width="500px">
           <v-card>
             <v-card-title>
               <span class="text-h5">{{ formTitle }}</span>
@@ -79,8 +77,8 @@
               </v-btn>
             </v-card-actions>
           </v-card>
-        </v-dialog> -->
-        <!-- <v-dialog v-model="dialogDelete" max-width="500px">
+        </v-dialog>
+        <v-dialog v-model="dialogDelete" max-width="500px">
           <v-card>
             <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
             <v-card-actions>
@@ -90,41 +88,34 @@
               <v-spacer></v-spacer>
             </v-card-actions>
           </v-card>
-        </v-dialog> -->
+        </v-dialog>
      
     </template>
-    <template v-slot:[`item.edit`]="{ item }">  
+    <template v-slot:[`item.actions`]="{ item }" >
         <v-icon
             small
             class="mr-2"
             @click="editItem(item)"
         >
             mdi-pencil
-            
-        </v-icon> 
-    </template>
-    <template v-slot:[`item.delete`]="{ item }">
+        </v-icon>
         <v-icon
             small
             @click="deleteItem(item)"
         >
             mdi-delete
         </v-icon>
-        
     </template>
     </v-data-table>
     
 </template>
 <script>
-import DeleteItem from './DeleteItem.vue';
-import EditItem from './EditItem.vue';
 export default {
-  components: { EditItem, DeleteItem },
     name:'TableList',
     props:['headers','books'],
     data(){
         return{
-          item:{},
+          
            dialog: false,
            dialogDelete: false,
            editedIndex: -1,
@@ -143,70 +134,62 @@ export default {
         }
        
     },
-    // watch: {
-    //   dialog (val) {
-    //     val || this.close()
-    //   },
-    //   dialogDelete (val) {
-    //     val || this.closeDelete()
-    //   },
-    // },
-    // computed: {
-    //   formTitle () {
-    //     return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
-    //   },
-    // },
+    watch: {
+      dialog (val) {
+        val || this.close()
+      },
+      dialogDelete (val) {
+        val || this.closeDelete()
+      },
+    },
+    computed: {
+      formTitle () {
+        return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
+      },
+    },
     methods:{
-        editItem(item){
-          this.$refs.edit.editItem(item);
+        editItem (item) {
+            console.log(item)
+            this.editedIndex = this.books.indexOf(item)
+            this.editedItem = Object.assign({}, item)
+            this.dialog = true
         },
-        deleteItem(item){
-          this.$refs.delete.deleteItem(item);
+
+        deleteItem (item) {
+            this.editedIndex = this.books.indexOf(item)
+            this.editedItem = Object.assign({}, item)
+            this.dialogDelete = true
         },
-       
-       
-        // editItem (item) {
-        //     console.log(item)
-        //     this.editedIndex = this.books.indexOf(item)
-        //     this.editedItem = Object.assign({}, item)
-        //     this.dialog = true
-        // },
+        deleteItemConfirm () {
+            console.log(this.editedIndex);
+            this.books.splice(this.editedIndex, 1)
+            this.closeDelete()
+        },
 
-        // deleteItem (item) {
-        //     this.editedIndex = this.books.indexOf(item)
-        //     this.editedItem = Object.assign({}, item)
-        //     this.dialogDelete = true
-        // },
-        // deleteItemConfirm () {
-        //     console.log(this.editedIndex);
-        //     this.books.splice(this.editedIndex, 1)
-        //     this.closeDelete()
-        // },
+        close () {
+            this.dialog = false
+            this.$nextTick(() => {
+                this.editedItem = Object.assign({}, this.defaultItem)
+                this.editedIndex = -1
+            })
+        },
 
-        // close () {
-        //     this.dialog = false
-        //     this.$nextTick(() => {
-        //         this.editedItem = Object.assign({}, this.defaultItem)
-        //         this.editedIndex = -1
-        //     })
-        // },
+        closeDelete () {
+            this.dialogDelete = false
+            this.$nextTick(() => {
+                this.editedItem = Object.assign({}, this.defaultItem)
+                this.editedIndex = -1
+            })
+        },
 
-        // closeDelete () {
-        //     this.dialogDelete = false
-        //     this.$nextTick(() => {
-        //         this.editedItem = Object.assign({}, this.defaultItem)
-        //         this.editedIndex = -1
-        //     })
-        // },
-
-        // save () {
-        //     if (this.editedIndex > -1) {
-        //         Object.assign(this.books[this.editedIndex], this.editedItem)
-        //     } else {
-        //         this.books.push(this.editedItem)
-        //     }
-        //     this.close()
-        // },
+        save () {
+            if (this.editedIndex > -1) {
+                Object.assign(this.books[this.editedIndex], this.editedItem)
+            } else {
+                this.books.push(this.editedItem)
+            }
+            this.close()
+        },
     },
     
    
