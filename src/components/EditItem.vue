@@ -78,10 +78,12 @@
 <script>
 export default {
   name:'EditItem',
-  props:['dialog','editedIndex','editedItem','defaultItem','item'],
+  props:['editedIndex','defaultItem','item','dialog','editedItem','books'],
   data() {
     return {
-      books:[]
+    //   books:[],
+    //   dialog:false,
+    //   editedItem:{}
     };
   },
   methods: {
@@ -120,6 +122,7 @@ export default {
       formTitle () {
         return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
       },
+      
     },
 };
 </script>

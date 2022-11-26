@@ -160,8 +160,8 @@ export default {
   components:{
     Dialog,
     TableList,
-    EditItem,
-    DeleteItem
+    // EditItem,
+    // DeleteItem
   },
   methods:{
     updateTable(newBook){

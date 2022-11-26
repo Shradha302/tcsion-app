@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import SignUpView from '../views/SignUpView.vue'
 import SignInView from '../views/SignInView.vue'
 import DashboardView from '../views/DashboardView.vue'
+import UsersView from '../views/UsersView.vue'
 
 Vue.use(VueRouter)
 // route level code-splitting
@@ -33,7 +34,12 @@ const routes = [
     path: '/dashboard',
     name: 'dashboard',
     component: DashboardView
-  }
+  },
+  {
+    path: '/users',
+    name: 'users',
+    component: UsersView
+  },
 ]
 
 const router = new VueRouter({

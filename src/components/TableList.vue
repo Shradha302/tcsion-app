@@ -6,7 +6,7 @@
         class="elevation-1"
     >
     <template v-slot:top>
-      <EditItem v-bind:editedItem="editedItem" v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem"  v-bind:dialog="dialog" v-on:editItem="editTableItem($event)" v-bind:item="item" ref="edit"/>
+      <EditItem  v-bind:books="books" v-bind:editedItem="editedItem" v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem"  v-bind:dialog="dialog" v-on:editItem="editTableItem($event)" v-bind:item="item" ref="edit"/>
       <DeleteItem  v-bind:books="books" v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem" v-bind:dialogDelete="dialogDelete" v-bind:item="item" ref="delete"/>
       <!-- <DeleteItem  v-bind:books="books" v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem" v-bind:dialogDelete="dialogDelete" v-bind:item="item" ref="delete" v-on:updateFieldChild="updateFields($event)"/> -->
         <!-- <v-dialog v-model="dialog" max-width="500px">
@@ -122,11 +122,11 @@ import EditItem from './EditItem.vue';
 export default {
   components: { EditItem, DeleteItem },
     name:'TableList',
-    props:['headers','books'],
+    props:['headers','books','dialog'],
     data(){
         return{
           item:{},
-           dialog: false,
+          //  dialog: false,
            dialogDelete: false,
            editedIndex: -1,
             editedItem: {
