@@ -6,7 +6,7 @@
            <template v-slot:activator="{on,attrs}">
             <v-btn color="blue lighten-2" v-bind="attrs" v-on="on">New Item</v-btn>
            </template>
-           <v-card class="red lighten-3 dark">
+           <v-card>
                 <v-card-title class="pa-3 ma-3"><h2>Add new book</h2></v-card-title>
                 <v-text-field label="Book Name" v-model="newBook.name" class="pa-3 ma-3"> </v-text-field>
                 <v-text-field label="Author Name" v-model="newBook.author" class="pa-3 ma-3"> </v-text-field>
