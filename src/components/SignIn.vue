@@ -134,15 +134,119 @@ export default {
 <style scoped>
   .right-content {
   color: rgb(125, 125, 254);
-  display: inline;
+  display: block;
   float: right;
-  margin-right: 20%;
+  margin-right: 30%;
   margin-left: 60px;
   margin-bottom: 0px;
   padding: 10px 10px 600px 10px;
-  border-radius: 10px;
+  border-radius: 100px;
   height: 100px;
   width: 450px;
+}
+.n-footer {
+  background: #043254 none repeat scroll 0 0;
+  /* top:90%; */
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin-top:10px;
+}
+#year1 {
+  font-size: 1em;
+  vertical-align: 0px;
+}
+.footer-content {
+  display: inline-block;
+  float: right;
+  margin-right: 3%;
+  margin-left: 2px;
+}
+.circle {
+  background: #00aade none repeat scroll 0 0;
+  border-radius: 50%;
+  color: #ffffff;
+  display: inline-block;
+  font-size: 0.9em;
+  width: 23px;
+  height: 21px;
+  padding-top: 2px;
+}
+.footer {
+  color: #fff;
+  font-size: 0.8em;
+  font-weight: 600;
+  float: left;
+  margin-left: 3%;
+  line-height: 23px;
+}
+.items {
+  font-size: small;
+  float: right;
+  /* background-color: #00aade; */
+  margin-right: 0%;
+  margin-top: 25px;
+  border-bottom: #00aade;
+  border-width: 12px;
+}
+.right-content form a {
+  font-size: small;
+  float: right;
+  margin-right: 30px;
+  color: white;
+}
+.right-content form input {
+  width: 90%;
+  height: 20%;
+  padding: 10px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
+}
+.right-content form h1 {
+  font-size: xx-large;
+  font-weight: 600;
+}
+.right-content form .checkbx {
+  float: left;
+  font-size: small;
+}
+.right-content form {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.right-content form .btn1 {
+  position: absolute;
+  background-color: rgb(27, 192, 33);
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  box-shadow: #2d3540;
+  cursor: pointer;
+  border-radius: 0px;
+  align-items: center;
+}
+.right-content form .btn:hover {
+  background-color: rgba(27, 192, 33, 0.1);
+}
+.right-content form .checkbx {
+  width: 10px;
+}
+.right-content .banner {
+  background-color: white;
+  width: 100%;
+  height: 60px;
+}
+.n-footer .division {
+  background-color: white;
+  padding-top: 0 0 0 0;
+  text-align: center;
+  margin-top: 0%;
+  color: orange;
+  height: 60px;
+  width: 100%;
+  margin-top: 0px;
 }
 </style>
 

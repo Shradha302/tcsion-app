@@ -1,11 +1,9 @@
 <template>
-    
         <v-dialog v-model="dialog" max-width="500px">
             <v-card>
                 <v-card-title>
                 <span class="text-h5">{{ formTitle }}</span>
                 </v-card-title>
-
                 <v-card-text>
                 <v-container>
                     <v-row>
@@ -48,12 +46,10 @@
                         v-model="editedItem.date"
                         label="date"
                         ></v-text-field>
-                    </v-col>
-                    
+                    </v-col>        
                     </v-row>
                 </v-container>
                 </v-card-text>
-
                 <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn
@@ -73,7 +69,6 @@
                 </v-card-actions>
             </v-card>
             </v-dialog>
-    
 </template>
 <script>
 export default {
@@ -81,22 +76,19 @@ export default {
   props:['editedIndex','defaultItem','item','dialog','editedItem','books'],
   data() {
     return {
-    //   books:[],
-    //   dialog:false,
-    //   editedItem:{}
     };
   },
   methods: {
     editItem (item) {
-            console.log(item)
-            console.log(typeof books)
+            //console.log(item)
+            //console.log(typeof books)
             this.editedIndex = this.books.indexOf(item)
             this.editedItem = Object.assign({}, item)
             this.dialog = true
     },
     save () {
             if (this.editedIndex > -1) {
-                console.log(this.editedIndex)
+                //console.log(this.editedIndex)
                 Object.assign(this.books[this.editedIndex], this.editedItem)
             } else {
                 this.books.push(this.editedItem)
@@ -110,8 +102,6 @@ export default {
                 this.editedIndex = -1
             })
     },
-
-
   },
   watch: {
       dialog (val) {

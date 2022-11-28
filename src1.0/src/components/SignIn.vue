@@ -1,15 +1,6 @@
 <template>
-    
     <v-app>
-
     <v-main>
-       <nav>
-        <router-link to="/">Home</router-link> |
-        <router-link to="/home">SignUp</router-link> |
-        <router-link to="/signin" >SignIn</router-link>
-      </nav>
-      <router-view/>
-      
       <v-card flat tile ma-0 pa-0>
         <v-toolbar color="cyan" >
               <img src="@/assets/tcsion-banner.png" height="100" width="150" />
@@ -30,7 +21,6 @@
                   <option value="Portugese">Portugese</option>
                 </select>
               </div>
-           
         </v-toolbar>
       </v-card>
       <div class="header">
@@ -47,13 +37,9 @@
         />
         </div>
       </div>
-    
-   
-
    <v-spacer></v-spacer>
-
     <!-- content -->
-    <div class="content">
+    <div class="right-content">
         <v-card height="500" color="rgb(125, 125, 254)">
         <v-card-text >
         <v-form id="form" @submit="validateFields" >
@@ -74,27 +60,18 @@
           <v-text-field label="Password" id="password" type="password" v-model="form.password" 
             placeholder="Password"
             solo/></v-row>
-           
           <v-btn class="success mx-0 mt-3" type="submit" >SignIn</v-btn>
         </v-form>
         </v-card-text>
         </v-card>
-      
     </div>
-
-   
     </v-main>
-    
     <div class="n-footer">
       <div class="footer-content">
         <span class="circle FB"></span>
-
         <span class="circle"></span>
-
         <span class="circle"></span>
-
         <span class="circle"></span>
-
         <span class="circle"></span>
       </div>
       <div class="footer">
@@ -103,12 +80,9 @@
         Tata Consultancy Services. All Rights Reserved.
       </div>
     </div>
-   
   </v-app>
 </template>
-
 <script>
-
 export default {
     name:'SignIn',
     data() {
@@ -119,13 +93,11 @@ export default {
                 email:null,
                 
             },
-            
             errorMessages:[],
             emptyFieldErrorMessage:'No field should be empty',
             usernameErrorMessage:'Username is incorrect',
             emailErrorMessage:'Email is incorrect',
-            passwordErrorMessage:'Password is incorrect',
-            
+            passwordErrorMessage:'Password is incorrect',   
         }
     },
     methods :{
@@ -137,29 +109,41 @@ export default {
             }
             const userObj = JSON.parse(localStorage.getItem('user'));
             if(this.form.username !== userObj.username){
-                console.log('username error!');
+                //console.log('username error!');
                 this.errorMessages.push(this.usernameErrorMessage);
             }
             if(this.form.password !== userObj.password){
-                console.log('password error!');
+                //console.log('password error!');
                 this.errorMessages.push(this.passwordErrorMessage);
             }
             if(this.form.email !== userObj.email){
-                console.log('email error');
+                //console.log('email error');
                 this.errorMessages.push(this.emailErrorMessage);
             }
-           
             if(this.errorMessages.length == 0){
-                console.log('successful signin');
+                //console.log('successful signin');
                 alert('You  have successfully signed in. /n You will be redirected to Dashboard page.');
                 //redirect to dashboard page
                 this.$router.push('/dashboard');
             }
             e.preventDefault();
-        },
-      
+        }, 
     }
 };
 </script>
+<style scoped>
+  .right-content {
+  color: rgb(125, 125, 254);
+  display: inline;
+  float: right;
+  margin-right: 20%;
+  margin-left: 60px;
+  margin-bottom: 0px;
+  padding: 10px 10px 600px 10px;
+  border-radius: 10px;
+  height: 100px;
+  width: 450px;
+}
+</style>
 
 

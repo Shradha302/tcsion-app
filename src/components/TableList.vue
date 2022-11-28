@@ -6,8 +6,8 @@
         class="elevation-1"
     >
     <template v-slot:top>
-      <EditItem  v-bind:books="books" v-bind:editedItem="editedItem" v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem"  v-bind:dialog="dialog" v-on:editItem="editTableItem($event)" v-bind:item="item" ref="edit"/>
-      <DeleteItem  v-bind:books="books" v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem" v-bind:dialogDelete="dialogDelete" v-bind:item="item" ref="delete"/>
+      <EditItem  v-bind:books="books" v-bind:editedItem="editedItem" v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem"  v-bind:dialog="dialog" v-on:editItem="editTableItem($event)" v-on:sendData="sendData($event)" v-bind:item="item" ref="edit"/>
+      <DeleteItem  v-bind:books="books" v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem" v-bind:dialogDelete="dialogDelete" v-bind:item="item" ref="delete" v-on:sendData="sendDeleteData($event)" />
       <!-- <DeleteItem  v-bind:books="books" v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem" v-bind:dialogDelete="dialogDelete" v-bind:item="item" ref="delete" v-on:updateFieldChild="updateFields($event)"/> -->
         <!-- <v-dialog v-model="dialog" max-width="500px">
           <v-card>
@@ -118,12 +118,12 @@ import EditItem from './EditItem.vue';
 export default {
   components: { EditItem, DeleteItem },
     name:'TableList',
-    props:['headers','books','dialog'],
+    props:['headers','books','dialog','dialogDelete'],
     data(){
         return{
           item:{},
-          //  dialog: false,
-           dialogDelete: false,
+           //dialog: false,
+           //dialogDelete: false,
            editedIndex: -1,
             editedItem: {
                 name: '',
@@ -154,6 +154,16 @@ export default {
     //   },
     // },
     methods:{
+        sendData(proxyEditedItem,proxyEditedIndex,proxyDialog){
+          this.editedItem=proxyEditedItem;
+          //this.dialog=proxyDialog;
+          this.editedIndex=this.proxyEditedIndex;
+        },
+        sendDeleteData(proxyEditedItem,proxyEditedIndex,proxyDeleteDialog){
+          this.editedItem=proxyEditedItem;
+          this.dialogDelete=proxyDeleteDialog;
+          this.editedIndex=this.proxyEditedIndex;
+        },
         editItem(item){
           this.$refs.edit.editItem(item);
         },

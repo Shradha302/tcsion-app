@@ -1,5 +1,5 @@
 <template>
-        <v-dialog v-model="dialog" max-width="500px">
+        <v-dialog v-model="proxyDialog" max-width="500px">
             <v-card>
                 <v-card-title>
                 <span class="text-h5">{{ formTitle }}</span>
@@ -13,7 +13,7 @@
                         md="4"
                     >
                         <v-text-field
-                        v-model="editedItem.name"
+                        v-model="proxyEditedItem.name"
                         label="Book name"
                         ></v-text-field>
                     </v-col>
@@ -23,7 +23,7 @@
                         md="4"
                     >
                         <v-text-field
-                        v-model="editedItem.author"
+                        v-model="proxyEditedItem.author"
                         label="Author"
                         ></v-text-field>
                     </v-col>
@@ -33,7 +33,7 @@
                         md="4"
                     >
                         <v-text-field
-                        v-model="editedItem.pages"
+                        v-model="proxyEditedItem.pages"
                         label="No. of Pages"
                         ></v-text-field>
                     </v-col>
@@ -43,7 +43,7 @@
                         md="4"
                     >
                         <v-text-field
-                        v-model="editedItem.date"
+                        v-model="proxyEditedItem.date"
                         label="date"
                         ></v-text-field>
                     </v-col>        
@@ -76,30 +76,48 @@ export default {
   props:['editedIndex','defaultItem','item','dialog','editedItem','books'],
   data() {
     return {
+        proxyEditedItem:{
+                name: '',
+                author:'',
+                pages:0,
+                date:null
+        },
+        proxyEditedIndex:-1,
     };
   },
+  created(){
+    this.proxyEditedItem= this.editedItem;
+    this.proxyEditedIndex = this.editedIndex;
+    this.proxyDialog = this.dialog;
+  },
   methods: {
+    editTableItem(proxyEditedItem,proxyEditedIndex,proxyDialog){
+        this.$emit('sendData',proxyEditedItem,proxyEditedIndex,proxyDialog);   
+    },
     editItem (item) {
             //console.log(item)
             //console.log(typeof books)
-            this.editedIndex = this.books.indexOf(item)
-            this.editedItem = Object.assign({}, item)
-            this.dialog = true
+            // this.editedIndex = this.books.indexOf(item)
+            // this.editedItem = Object.assign({}, item)
+            // this.dialog = true
+            this.proxyEditedIndex = this.books.indexOf(item)
+            this.proxyEditedItem = Object.assign({}, item)
+            this.proxyDialog = true
     },
     save () {
-            if (this.editedIndex > -1) {
+            if (this.proxyEditedIndex > -1) {
                 //console.log(this.editedIndex)
-                Object.assign(this.books[this.editedIndex], this.editedItem)
+                Object.assign(this.books[this.proxyEditedIndex], this.proxyEditedItem)
             } else {
-                this.books.push(this.editedItem)
+                this.books.push(this.proxyEditedItem)
             }
             this.close()
     },
     close () {
-            this.dialog = false
+            this.proxyDialog = false
             this.$nextTick(() => {
-                this.editedItem = Object.assign({}, this.defaultItem)
-                this.editedIndex = -1
+                this.proxyEditedItem = Object.assign({}, this.defaultItem)
+                this.proxyEditedIndex = -1
             })
     },
   },
@@ -110,9 +128,8 @@ export default {
     },
   computed: {
       formTitle () {
-        return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
-      },
-      
+        return this.proxyEditedIndex === -1 ? 'New Item' : 'Edit Item'
+      },  
     },
 };
 </script>

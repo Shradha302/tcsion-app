@@ -7,12 +7,6 @@ import DashboardView from '../views/DashboardView.vue'
 import UsersView from '../views/UsersView.vue'
 
 Vue.use(VueRouter)
-// route level code-splitting
-
-    // this generates a separate chunk (about.[hash].js) for this route
-
-    // which is lazy-loaded when the route is visited
-
 const routes = [
   {
     path: '/',
@@ -23,7 +17,6 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: SignUpView
-    //lazyloading
   },
   {
     path: '/signin',
@@ -41,7 +34,6 @@ const routes = [
     component: UsersView
   },
 ]
-
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
