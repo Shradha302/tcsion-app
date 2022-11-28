@@ -4,7 +4,7 @@
         <v-spacer></v-spacer>
         <v-dialog max-width="600px" v-model="dialog">
            <template v-slot:activator="{on,attrs}">
-            <v-btn color="red lighten-2" v-bind="attrs" v-on="on">New Item</v-btn>
+            <v-btn color="blue lighten-2" v-bind="attrs" v-on="on">New Item</v-btn>
            </template>
            <v-card class="red lighten-3 dark">
                 <v-card-title class="pa-3 ma-3"><h2>Add new book</h2></v-card-title>
@@ -38,7 +38,6 @@
                     ></v-date-picker>
                 </v-menu>
                 <v-card-actions>
-                    <!-- <v-btn color="primary" text @click="dialog=false" v-on:click="addItem">SAVE</v-btn> -->
                     <v-btn color="blue"  v-on:click="addItem">SAVE</v-btn>
                 </v-card-actions>
             </v-card>
@@ -59,9 +58,7 @@ export default {
            },
            
           dialog:false,
-          // date: null,
-          menu: false,
-           
+          menu: false,  
         }
     },
     watch: {
@@ -78,10 +75,8 @@ export default {
         }  
       },
       save (date) {
-        this.$refs.menu.save(date)
-        
+        this.$refs.menu.save(date) 
       },
-    }
-  
+    } 
 }
 </script>

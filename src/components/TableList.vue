@@ -92,7 +92,6 @@
             </v-card-actions>
           </v-card>
         </v-dialog> -->
-     
     </template>
     <template v-slot:[`item.edit`]="{ item }">  
         <v-icon
@@ -100,8 +99,7 @@
             class="mr-2"
             @click="editItem(item)"
         >
-            mdi-pencil
-            
+            mdi-pencil     
         </v-icon> 
     </template>
     <template v-slot:[`item.delete`]="{ item }">
@@ -110,11 +108,9 @@
             @click="deleteItem(item)"
         >
             mdi-delete
-        </v-icon>
-        
+        </v-icon>   
     </template>
-    </v-data-table>
-    
+    </v-data-table>   
 </template>
 <script>
 import DeleteItem from './DeleteItem.vue';
@@ -141,8 +137,7 @@ export default {
                 pages:0,
                 date:null
             },
-        }
-       
+        }   
     },
     //dialog,editedindex,editedItem ki value update kro from child
     // watch: {
@@ -215,8 +210,6 @@ export default {
         //     }
         //     this.close()
         // },
-    },
-    
-   
+    },   
 }
 </script>

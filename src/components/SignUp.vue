@@ -1,14 +1,6 @@
 <template>
   <v-app>
-
-    <v-main>
-       <nav>
-        <router-link to="/">Home</router-link> |
-        <router-link to="/home">SignUp</router-link> |
-        <router-link to="/signin" >SignIn</router-link>
-      </nav>
-      <router-view/>
-      
+    <v-main> 
       <v-card flat tile ma-0 pa-0>
         <v-toolbar color="cyan" >
               <img src="@/assets/tcsion-banner.png" height="100" width="150" />
@@ -28,8 +20,7 @@
                   <option value="Bahasa">Bahasa</option>
                   <option value="Portugese">Portugese</option>
                 </select>
-              </div>
-           
+              </div>       
         </v-toolbar>
       </v-card>
       <div class="header">
@@ -46,11 +37,7 @@
         />
         </div>
       </div>
-    
-   
-
     <h1>TCSiON</h1>
-
     <!-- content -->
     <div class="content">
       <div class="left-content">
@@ -60,7 +47,6 @@
           with all new <a id="orange">TCS iON</a>
         </div>
       </div>
-
       <div class="right-content">
         <v-card height="725" color="rgb(125, 125, 254)">
         <v-card-text >
@@ -77,30 +63,10 @@
             <v-row cols="12" sm="6" md="3"> 
           <v-text-field label="Email Id" id="email" v-model="form.email"  placeholder="Email Id"
             solo /></v-row>
-          
-            <!-- <v-radio label="Male"
-              id="radiobtn"
-              type="radio"
-              value="male"
-              name="gender"
-              v-model="form.pickedGender"
-            />
-          
-            <v-radio label="female"
-              id="radiobtn1"
-              type="radio"
-              value="female"
-              name="gender"
-              v-model="form.pickedGender"
-            /> -->
             <label for="Gender" class="heading">Gender</label>
-
             <v-radio-group v-model="form.gender" mandatory>
-
             <v-radio label="Male" value="Male"></v-radio>
-
             <v-radio label="Female" value="Female"></v-radio>
-
           </v-radio-group>
           <v-row cols="12" sm="6" md="3"> 
           <v-text-field label="Password" id="password" type="password" v-model="form.password" 
@@ -119,20 +85,13 @@
         </v-card>
       </div>
     </div>
-
-   
-    </v-main>
-    
+    </v-main> 
     <div class="n-footer">
       <div class="footer-content">
         <span class="circle FB"></span>
-
         <span class="circle"></span>
-
         <span class="circle"></span>
-
         <span class="circle"></span>
-
         <span class="circle"></span>
       </div>
       <div class="footer">
@@ -141,12 +100,9 @@
         Tata Consultancy Services. All Rights Reserved.
       </div>
     </div>
-   
   </v-app>
 </template>
-
 <script>
-
 export default {
    name:'SignUp',
    data() {
@@ -169,7 +125,7 @@ export default {
   },
   methods :{
       createObject(){
-          console.log(this.form)
+          //console.log(this.form)
           // user['username']=this.form.username;
           // user['email']=this.form.email;
           // user['password']=this.form.password;
@@ -179,13 +135,13 @@ export default {
           // localStorage.setItem('username',this.form.username);
           // localStorage.setItem('email',this.form.email);
           // localStorage.setItem('password',this.form.password);
-          console.log('Data has been saved to localStorage');
+          //console.log('Data has been saved to localStorage');
           return this.form;
         },
       validateFields(e){
           this.errorMessages=[];
           if(this.form.username < 8){
-              console.log('username error!');
+              //console.log('username error!');
               this.errorMessages.push(this.lengthErrorMessage);
           }
           // if(!this.form.pickedGender){
@@ -193,20 +149,20 @@ export default {
           //   this.errorMessages.push(this.genderErrorMessage);
           // }
           if(!this.form.email){
-            console.log('email error');
+            //console.log('email error');
             this.errorMessages.push(this.emailErrorMessage);
           }
           if(this.form.password < 10){
-              console.log('password error!');
+              //console.log('password error!');
               this.errorMessages.push(this.passwordErrorMessage);
           }
           if(this.form.confpassword !== this.form.password){
-              console.log('Confirm password error!');
+              //console.log('Confirm password error!');
               this.errorMessages.push(this.confpasswordErrorMessage);
           }
           this.validEmail(this.form.email);
           if(this.errorMessages.length == 0){
-             console.log('creating object');
+             //console.log('creating object');
              this.createObject();
              alert('Successful signup! /n You will be redirected to signin page1')
              this.$router.push('/signin');
@@ -220,7 +176,6 @@ export default {
   }
 };
 </script>
-
 <style>
 .header {
   height: 28px;
@@ -277,7 +232,6 @@ div {
   margin-left: 3%;
   line-height: 23px;
 }
-
 .items {
   font-size: small;
   float: right;
@@ -299,8 +253,6 @@ div {
   border-radius: 10px;
   height: 500px;
   width: 450px;
-  /* overflow :auto;
-    overflow:auto; */
 }
 .left-content {
   display: inline;

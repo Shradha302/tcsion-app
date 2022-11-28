@@ -1,6 +1,5 @@
 <template>
   <v-app>
-
     <v-main>
        <nav>
         <router-link to="/">Home</router-link> |
