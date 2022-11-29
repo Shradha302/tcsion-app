@@ -3,17 +3,17 @@
     <v-main> 
       <v-card flat tile ma-0 pa-0>
         <v-toolbar color="cyan" >
-              <img src="@/assets/tcsion-banner.png" height="100" width="190" flat/>
+              <img src="@/assets/tcsion-banner.png" height="100" width="150" />
               <v-spacer></v-spacer>
-              <div class="items" >
-                <a id="phone_no" class="text-subtitle-1"> 1800 029 6030</a> |
-                <a id="red_text" class="text-subtitle-1"> SMS: 'TCSiON' to 16161</a> |
-                <a id="phone_no" class="text-subtitle-1"> Email US </a> |
-                <a id="phone_no" class="text-subtitle-1"> Visit Our Portal </a> |
-                <a id="phone_no" class="text-subtitle-1"> Help Central </a> |
-                <a id="phone_no" class="text-subtitle-1"> Language : </a>
+              <div class="items">
+                <a id="phone_no"> 1800 029 6030</a> |
+                <a id="red_text"> SMS: 'TCSiON' to 16161</a> |
+                <a id="phone_no"> Email US </a> |
+                <a id="phone_no"> Visit Our Portal </a> |
+                <a id="phone_no"> Help Central </a> |
+                <a id="phone_no"> Language : </a>
 
-                <select class="text-subtitle-1" name="English">
+                <select name="English">
                   <option value="English">English</option>
                   <option value="Spanish">Spanish</option>
                   <option value="Japanese">Japanese</option>
@@ -47,69 +47,62 @@
           with all new <a id="orange">TCS iON</a>
         </div>
       </div>
-      <v-hover>
-        <template v-slot:default="{ hover }">
-        <div class="right-content">
-          <v-card height="725" color="rgb(125, 125, 254)" :elevation="hover ? 24 : 6">
-          <v-card-text>
-          <v-form id="form" @submit="validateFields">
-            <p id="errorMessages" v-if="errorMessages.length" >
-              <ul class="red--text font-weight-bold">
-                <li v-for="e in errorMessages" v-bind:key="e.id" >{{ e }}</li>
-              </ul>
-            </p>
-            <v-card-title class="text-h4 font-weight-bold">Welcome</v-card-title>
+      <div class="right-content">
+        <v-card height="725" color="rgb(125, 125, 254)">
+        <v-card-text >
+        <v-form id="form" @submit="validateFields" >
+          <p id="errorMessages" v-if="errorMessages.length">
+            <ul>
+              <li v-for="e in errorMessages" v-bind:key="e.id">{{ e }}</li>
+            </ul>
+          </p>
+          <v-card-title>Welcome</v-card-title>
+          <v-row cols="12" sm="6" md="3"> 
+          <v-text-field label="Username" id="username"  v-model="form.username"  placeholder="Username"
+            solo /></v-row>
             <v-row cols="12" sm="6" md="3"> 
-            <v-text-field label="Username" id="username"  v-model="form.username"  placeholder="Username"
-              solo /></v-row>
-              <v-row cols="12" sm="6" md="3"> 
-            <v-text-field label="Email Id" id="email" v-model="form.email"  placeholder="Email Id"
-              solo /></v-row>
-              <v-row cols="12" sm="6" md="3">
-              <label for="Gender" class="text-subtitle-1">Gender</label>
-              <v-radio-group  row v-model="form.gender" mandatory>
-              <v-radio label="Male" value="Male" class="text-subtitle-2" ></v-radio>
-              <v-radio label="Female" value="Female" class="text-subtitle-2"></v-radio>
-            </v-radio-group>
-              </v-row>
+          <v-text-field label="Email Id" id="email" v-model="form.email"  placeholder="Email Id"
+            solo /></v-row>
+            <label for="Gender" class="heading">Gender</label>
+            <v-radio-group v-model="form.gender" mandatory>
+            <v-radio label="Male" value="Male"></v-radio>
+            <v-radio label="Female" value="Female"></v-radio>
+          </v-radio-group>
+          <v-row cols="12" sm="6" md="3"> 
+          <v-text-field label="Password" id="password" type="password" v-model="form.password" 
+            placeholder="Password"
+            solo/></v-row>
             <v-row cols="12" sm="6" md="3"> 
-            <v-text-field label="Password" id="password" type="password" v-model="form.password" 
-              placeholder="Password"
-              solo/></v-row>
-              <v-row cols="12" sm="6" md="3"> 
-            <v-text-field label="Confirm Password"
-              id="conf_password"
-              type="password"
-              v-model="form.confpassword" placeholder="Password"
-              solo
-            /></v-row>
-            <v-btn class="success mx-0 mt-3 pa-6 font-button" type="submit" >Signup</v-btn>
-          </v-form>
-          </v-card-text>
-          </v-card>
-        </div>
-        </template>
-      </v-hover>
+          <v-text-field label="Confirm Password"
+            id="conf_password"
+            type="password"
+            v-model="form.confpassword" placeholder="Password"
+            solo
+          /></v-row>
+          <v-btn class="success mx-0 mt-3" type="submit" >Signup</v-btn>
+        </v-form>
+        </v-card-text>
+        </v-card>
+      </div>
     </div>
     </v-main> 
     <div class="n-footer">
       <div class="footer-content">
-        <span class="circle FB"><v-icon small>mdi-facebook</v-icon></span>
-        <span class="circle"><v-icon small>mdi-twitter</v-icon></span>
-        <span class="circle"><v-icon small>mdi-linkedin</v-icon></span>
-        <span class="circle"><v-icon small>mdi-youtube</v-icon></span>
-        <span class="circle"><v-icon small>mdi-wordpress</v-icon></span>
+        <span class="circle FB"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
       </div>
       <div class="footer">
         <span> &copy; </span>
-        <span id="year1" class=""></span>
+        <span id="year1"></span>
         Tata Consultancy Services. All Rights Reserved.
       </div>
     </div>
   </v-app>
 </template>
 <script>
-
 export default {
    name:'SignUp',
    data() {
@@ -186,7 +179,7 @@ export default {
 <style scoped>
 .header {
   height: 28px;
-  background-color: #4f545a;
+  background-color: #2d3540;
   color: #fff;
   width: 100%;
 }
@@ -229,7 +222,7 @@ div {
   font-size: 0.9em;
   width: 23px;
   height: 21px;
-  padding-top: 0px;
+  padding-top: 2px;
 }
 .footer {
   color: #fff;
@@ -256,10 +249,10 @@ div {
   margin-right: 20%;
   margin-left: 60px;
   margin-bottom: 50px;
-  padding: 10px 10px 800px 10px;
+  padding: 10px 10px 10px 10px;
   border-radius: 10px;
-  height: 200px;
-  width: 470px;
+  height: 500px;
+  width: 450px;
 }
 .left-content {
   display: inline;

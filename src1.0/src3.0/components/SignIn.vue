@@ -1,19 +1,19 @@
 <template>
-    <v-app class="blue lighten-4">
+    <v-app>
     <v-main>
       <v-card flat tile ma-0 pa-0>
         <v-toolbar color="cyan" >
-              <img src="@/assets/tcsion-banner.png" height="100" width="200" flat />
+              <img src="@/assets/tcsion-banner.png" height="100" width="150" />
               <v-spacer></v-spacer>
               <div class="items">
-                <a id="phone_no" class="text-subtitle-1"> 1800 029 6030</a> |
-                <a id="red_text" class="text-subtitle-1"> SMS: 'TCSiON' to 16161</a> |
-                <a id="phone_no" class="text-subtitle-1"> Email US </a> |
-                <a id="phone_no" class="text-subtitle-1"> Visit Our Portal </a> |
-                <a id="phone_no" class="text-subtitle-1"> Help Central </a> |
-                <a id="phone_no" class="text-subtitle-1"> Language : </a>
+                <a id="phone_no"> 1800 029 6030</a> |
+                <a id="red_text"> SMS: 'TCSiON' to 16161</a> |
+                <a id="phone_no"> Email US </a> |
+                <a id="phone_no"> Visit Our Portal </a> |
+                <a id="phone_no"> Help Central </a> |
+                <a id="phone_no"> Language : </a>
 
-                <select class="text-subtitle-1" name="English">
+                <select name="English">
                   <option value="English">English</option>
                   <option value="Spanish">Spanish</option>
                   <option value="Japanese">Japanese</option>
@@ -37,19 +37,18 @@
         />
         </div>
       </div>
+   <v-spacer></v-spacer>
     <!-- content -->
-    <v-hover>
-    <template v-slot:default="{ hover }">
     <div class="right-content">
-        <v-card height="500" color="rgb(125, 125, 254)" :elevation="hover ? 24 : 6">
+        <v-card height="500" color="rgb(125, 125, 254)">
         <v-card-text >
         <v-form id="form" @submit="validateFields" >
           <p id="errorMessages" v-if="errorMessages.length">
-            <ul class="red--text font-weight-bold">
+            <ul>
               <li v-for="e in errorMessages" v-bind:key="e.id">{{ e }}</li>
             </ul>
           </p>
-          <v-card-title class="text-h5 font-weight-bold pb-7">Welcome to SignIn Page</v-card-title>
+          <v-card-title>Welcome To SignIn Page</v-card-title>
           <v-row cols="12" sm="6" md="3"> 
           <v-text-field label="Username" id="username"  v-model="form.username"  placeholder="Username"
             solo /></v-row>
@@ -61,32 +60,26 @@
           <v-text-field label="Password" id="password" type="password" v-model="form.password" 
             placeholder="Password"
             solo/></v-row>
-          <v-btn class="success mx-0 mt-3 pa-6 font-button" type="submit" >SignIn</v-btn>
+          <v-btn class="success mx-0 mt-3" type="submit" >SignIn</v-btn>
         </v-form>
         </v-card-text>
         </v-card>
-        </div>
-    </template>
-    </v-hover>
-        
+    </div>
     </v-main>
-    
     <div class="n-footer">
       <div class="footer-content">
-        <span class="circle FB"><v-icon small>mdi-facebook</v-icon></span>
-        <span class="circle"><v-icon small>mdi-twitter</v-icon></span>
-        <span class="circle"><v-icon small>mdi-linkedin</v-icon></span>
-        <span class="circle"><v-icon small>mdi-youtube</v-icon></span>
-        <span class="circle"><v-icon small>mdi-wordpress</v-icon></span>
+        <span class="circle FB"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
       </div>
       <div class="footer">
         <span> &copy; </span>
-        <span id="year1" ></span>
+        <span id="year1"></span>
         Tata Consultancy Services. All Rights Reserved.
       </div>
     </div>
-    
-    
   </v-app>
 </template>
 <script>
@@ -94,7 +87,6 @@ export default {
     name:'SignIn',
     data() {
       return{
-            
             form:{
                 username: null,
                 password: null,
@@ -151,7 +143,6 @@ export default {
   border-radius: 100px;
   height: 100px;
   width: 450px;
-  box-shadow:#043254;
 }
 .n-footer {
   background: #043254 none repeat scroll 0 0;
@@ -181,7 +172,7 @@ export default {
   font-size: 0.9em;
   width: 23px;
   height: 21px;
-  padding-top: 0px;
+  padding-top: 2px;
 }
 .footer {
   color: #fff;
@@ -256,40 +247,6 @@ export default {
   height: 60px;
   width: 100%;
   margin-top: 0px;
-}
-.items {
-  font-size: small;
-  float: right;
-  /* background-color: #00aade; */
-  margin-right: 0%;
-  margin-top: 25px;
-  border-bottom: #00aade;
-  border-width: 12px;
-}
-select {
-  border-color: blue;
-}
-#phone_no {
-  color: blue;
-  font-weight: 800;
-}
-#red_text {
-  color: red;
-  font-weight: 800;
-}
-.header {
-  height: 28px;
-  background-color: #4f545a;
-  color: #fff;
-  width: 100%;
-}
-.title {
-  padding: 4px 3%;
-  float: left;
-}
-.title-img {
-  padding: 5px 3%;
-  float: right;
 }
 </style>
 

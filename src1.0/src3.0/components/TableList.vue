@@ -1,15 +1,11 @@
 <template>
-<div>
     <v-data-table 
         :headers="headers"
         :items="books"
         :items-per-page=8
-        :search="search"
         class="elevation-1"
-
     >
     <template v-slot:top>
-      <v-text-field v-model="search" type="text" placeholder="Search" width="">Search</v-text-field><v-icon>mdi-search</v-icon>
       <EditItem  v-bind:books="books" v-bind:editedItem="editedItem" v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem"  v-bind:dialog="dialog" v-on:editItem="editTableItem($event)" v-on:sendData="sendData($event)" v-bind:item="item" ref="edit"/>
       <DeleteItem  v-bind:books="books" v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem" v-bind:dialogDelete="dialogDelete" v-bind:item="item" ref="delete" v-on:sendData="sendDeleteData($event)" />
       <!-- <DeleteItem  v-bind:books="books" v-bind:editedIndex="editedIndex" v-bind:defaultItem="defaultItem" v-bind:dialogDelete="dialogDelete" v-bind:item="item" ref="delete" v-on:updateFieldChild="updateFields($event)"/> -->
@@ -98,22 +94,23 @@
         </v-dialog> -->
     </template>
     <template v-slot:[`item.edit`]="{ item }">  
-        <v-btn fab x-small color="blue lighten-3"><v-icon 
+        <v-icon
+            small
+            class="mr-2"
             @click="editItem(item)"
         >
             mdi-pencil     
-        </v-icon> </v-btn>
+        </v-icon> 
     </template>
     <template v-slot:[`item.delete`]="{ item }">
-        <v-btn fab x-small color="red lighten-3"> <v-icon
+        <v-icon
+            small
             @click="deleteItem(item)"
         >
             mdi-delete
-        </v-icon> </v-btn>  
+        </v-icon>   
     </template>
-    </v-data-table> 
-  
-</div> 
+    </v-data-table>   
 </template>
 <script>
 import DeleteItem from './DeleteItem.vue';
@@ -124,7 +121,6 @@ export default {
     props:['headers','books','dialog','dialogDelete'],
     data(){
         return{
-          search:'',
           item:{},
            //dialog: false,
            //dialogDelete: false,
@@ -141,7 +137,6 @@ export default {
                 pages:0,
                 date:null
             },
-          
         }   
     },
     //dialog,editedindex,editedItem ki value update kro from child

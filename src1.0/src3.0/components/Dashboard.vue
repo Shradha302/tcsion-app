@@ -1,4 +1,5 @@
 <template>
+  
   <div>
   <Dialog v-on:addItem="updateTable($event)" />
   <TableList v-bind:headers="headers" v-bind:books="books" v-bind:dialog="dialog" v-bind:dialogDelete="dialogDelete" v-on:editItem="updateItem($event)" />
